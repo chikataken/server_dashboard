@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Homelab Dashboard</title>
   <style>
-    /* Reset & base */
+    /* Reset & Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: sans-serif;
@@ -13,11 +13,11 @@
       align-items: center;
       height: 100vh;
       width: 100vw;
-      background-color: #202125; /* Darker ChatGPT-like background */
+      background-color: #202125; /* Dark ChatGPT-style background */
       overflow: hidden;
-      color: #e6e6e6; /* light text */
+      color: #e6e6e6;
     }
-    /* Container holding sidebar and terminal */
+    /* Main container */
     .container {
       display: flex;
       width: 90vw;
@@ -26,65 +26,101 @@
     }
     /* Bubble base style */
     .bubble {
-      background: #343541; /* Darker ChatGPT bubble color */
+      background: #343541; /* ChatGPT bubble color */
       border-radius: 0.5rem;
       box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-      overflow: hidden;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
-    /* Sidebar bubble */
+    /* Sidebar bubble with matching outline */
     .sidebar {
       flex: 0 0 220px;
-      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #5c5c6a; /* match terminal outline */
     }
-    .sidebar h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 1.25rem;
-      color: #f5f5f5;
+    .sidebar-header {
+      height: 2rem;
+      background: #2b2b3c;
+      border-bottom: 1px solid #5c5c6a;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #e6e6e6;
     }
-    .sidebar ul { list-style: none; }
-    .sidebar li + li { margin-top: 0.75rem; }
-    .sidebar a {
+    .sidebar-content {
+      padding: 0.75rem 1rem;
+      flex: 1;
+    }
+    .sidebar-content ul {
+      list-style: none;
+    }
+    .sidebar-content li + li {
+      margin-top: 0.75rem;
+    }
+    .sidebar-content a {
       display: block;
       text-decoration: none;
-      color: #10a37f; /* ChatGPT green link */
+      color: #58a6ff; /* Blue link color */
       font-weight: bold;
       padding: 0.5rem;
       border-radius: 0.25rem;
       transition: background 0.2s;
     }
-    .sidebar a:hover { background: rgba(16,163,127,0.1); }
+    .sidebar-content a:hover { background: rgba(88,166,255,0.1); }
     /* Terminal bubble */
     .terminal-container {
       flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #5c5c6a;
+    }
+    .terminal-header {
+      height: 2rem;
+      background: #2b2b3c;
+      border-bottom: 1px solid #5c5c6a;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #e6e6e6;
+    }
+    .terminal-body {
+      flex: 1;
+      background: #1e1e1e;
+      overflow: hidden;
       padding: 0.5rem;
     }
-    .terminal-container iframe {
+    .terminal-body iframe {
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 0.5rem;
-      transform: scale(0.95);
-      transform-origin: top left;
+      border-radius: 0 0 0.5rem 0.5rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <nav class="bubble sidebar">
-      <h2>Services</h2>
-      <ul>
-        <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
-        <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
-        <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
-        <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
-      </ul>
+      <div class="sidebar-header">Links</div>
+      <div class="sidebar-content">
+        <ul>
+          <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
+          <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
+          <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
+          <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
+        </ul>
+      </div>
     </nav>
-
     <div class="bubble terminal-container">
-      <iframe src="/terminal/"></iframe>
+      <div class="terminal-header">ssh</div>
+      <div class="terminal-body">
+        <iframe src="/terminal/" tabindex="0"></iframe>
+      </div>
     </div>
   </div>
 </body>

@@ -5,11 +5,7 @@
   <title>Homelab Dashboard</title>
   <style>
     /* Reset & base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: sans-serif;
       display: flex;
@@ -17,19 +13,17 @@
       align-items: center;
       height: 100vh;
       width: 100vw;
-      background-color: #f9f9f9;
+      background-color: #f0f2f5;
       overflow: hidden;
     }
-
-    /* Container for both bubbles */
+    /* Container holding sidebar and terminal */
     .container {
       display: flex;
-      gap: 1.5rem;
       width: 90vw;
       height: 80vh;
+      gap: 1rem;
     }
-
-    /* Common bubble style */
+    /* Bubble base style */
     .bubble {
       background: #ffffff;
       border-radius: 1rem;
@@ -37,24 +31,19 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 1rem;
     }
-
     /* Sidebar bubble */
     .sidebar {
       flex: 0 0 220px;
+      padding: 1rem;
     }
     .sidebar h2 {
       text-align: center;
       margin-bottom: 1rem;
       font-size: 1.25rem;
     }
-    .sidebar ul {
-      list-style: none;
-    }
-    .sidebar li + li {
-      margin-top: 0.75rem;
-    }
+    .sidebar ul { list-style: none; }
+    .sidebar li + li { margin-top: 0.75rem; }
     .sidebar a {
       display: block;
       text-decoration: none;
@@ -64,19 +53,30 @@
       border-radius: 0.5rem;
       transition: background 0.2s;
     }
-    .sidebar a:hover {
-      background: rgba(3, 102, 214, 0.1);
-    }
-
+    .sidebar a:hover { background: rgba(3,102,214,0.1); }
     /* Terminal bubble */
     .terminal-container {
       flex: 1;
+      position: relative;
     }
     .terminal-container iframe {
-      flex: 1;
-      border: none;
       width: 100%;
       height: 100%;
+      border: none;
+      border-radius: 1rem;
+    }
+    /* Focus hint overlay */
+    .focus-hint {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      pointer-events: none;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -93,8 +93,22 @@
     </nav>
 
     <div class="bubble terminal-container">
-      <iframe src="/terminal/"></iframe>
+      <iframe id="terminalFrame" src="/terminal/" tabindex="0" onload="this.contentWindow.focus();"></iframe>
+      <div class="focus-hint" id="focusHint">Click or press Enter to focus terminal</div>
     </div>
   </div>
+  <script>
+    const frame = document.getElementById('terminalFrame');
+    const hint = document.getElementById('focusHint');
+    frame.addEventListener('load', () => {
+      frame.contentWindow.focus();
+    });
+    // Hide hint on any key press when frame is focused
+    window.addEventListener('keydown', () => {
+      if (document.activeElement === frame) {
+        hint.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

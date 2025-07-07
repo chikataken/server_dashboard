@@ -54,4 +54,29 @@
 
     /* Main content area (if you ever add content here) */
     .main {
-      margin-left: 260px; /* leave room*
+      margin-left: 260px; /* leave room for sidebar + gap */
+      padding: 2rem;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar">
+    <h2>Services</h2>
+    <ul>
+      <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
+      <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
+      <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
+      <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <h1>Welcome to Your Homelab</h1>
+    <p>Select a service from the bubble to the left.</p>
+    <!-- You can add dashboard widgets or status info here -->
+  </div>
+
+</body>
+</html>

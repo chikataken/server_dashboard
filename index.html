@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homelab Dashboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+    }
+    .links {
+      list-style: none;
+      padding: 0;
+    }
+    .links li {
+      margin: 1rem 0;
+    }
+    .links a {
+      text-decoration: none;
+      font-size: 1.25rem;
+      color: #0366d6;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Homelab Dashboard</h1>
+  <ul class="links">
+    <li><a href="http://192.168.1.171:8123">HA</a></li>
+    <li><a href="http://192.168.1.171:2283">Immich</a></li>
+    <li><a href="http://192.168.1.171:8091">Zwave</a></li>
+    <li><a href="http://192.168.1.171:90/admin">Pi-Hole</a></li>
+  </ul>
+</body>
+</html>

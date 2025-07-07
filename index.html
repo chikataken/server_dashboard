@@ -42,7 +42,7 @@
     }
     .sidebar-header {
       height: 2rem;
-      background: #2b2b3c;
+      background: #2b2b3c; /* bubble header color */
       border-bottom: 1px solid #5c5c6a;
       display: flex;
       align-items: center;
@@ -76,7 +76,7 @@
     }
     .terminal-header {
       height: 2rem;
-      background: #2b2b3c;
+      background: #2b2b3c; /* bubble header color */
       border-bottom: 1px solid #5c5c6a;
       display: flex;
       align-items: center;
@@ -87,15 +87,18 @@
     }
     .terminal-body {
       flex: 1;
-      background: #1e1e1e;
+      background: #343541; /* match bubble color */
       overflow: hidden;
-      padding: 0; /* removed padding to make flush */
+      padding: 0; /* remove padding for flush layout */
     }
     .terminal-body iframe {
       width: 100%;
       height: 100%;
       border: none;
       border-radius: 0 0 0.5rem 0.5rem;
+      background: #1e1e1e; /* terminal background */
+      transform: translate(5px, 5px); /* shift content slightly */
+      transform-origin: top left;
     }
   </style>
 </head>

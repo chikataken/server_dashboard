@@ -13,27 +13,41 @@
     body {
       font-family: sans-serif;
       display: flex;
-      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
       background-color: #f9f9f9;
       overflow: hidden;
     }
 
-    /* Sidebar “bubble” */
-    .sidebar {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      width: 200px;
+    /* Container for both bubbles */
+    .container {
+      display: flex;
+      gap: 1.5rem;
+      width: 90vw;
+      height: 80vh;
+    }
+
+    /* Common bubble style */
+    .bubble {
       background: #ffffff;
-      border-radius: 1.5rem;
+      border-radius: 1rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      z-index: 100;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    /* Sidebar bubble */
+    .sidebar {
+      flex: 0 0 220px;
     }
     .sidebar h2 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
       text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
     }
     .sidebar ul {
       list-style: none;
@@ -47,65 +61,40 @@
       color: #0366d6;
       font-weight: bold;
       padding: 0.5rem;
-      border-radius: 0.75rem;
+      border-radius: 0.5rem;
       transition: background 0.2s;
     }
     .sidebar a:hover {
       background: rgba(3, 102, 214, 0.1);
     }
 
-    /* Main content area */
-    .main {
-      margin-left: 260px; /* leave room for sidebar + gap */
-      padding: 2rem;
-      flex: 1;
-      overflow-y: auto;
-    }
-
     /* Terminal bubble */
-    .terminal-bubble {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 70%;
-      background: #1e1e1e;
-      border-radius: 1rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      overflow: hidden;
-      z-index: 200;
+    .terminal-container {
+      flex: 1;
     }
-    .terminal-bubble iframe {
+    .terminal-container iframe {
+      flex: 1;
+      border: none;
       width: 100%;
       height: 100%;
-      border: none;
-      background: transparent;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <nav class="bubble sidebar">
+      <h2>Services</h2>
+      <ul>
+        <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
+        <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
+        <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
+        <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
+      </ul>
+    </nav>
 
-  <nav class="sidebar">
-    <h2>Services</h2>
-    <ul>
-      <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
-      <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
-      <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
-      <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
-    </ul>
-  </nav>
-
-  <div class="main">
-    <h1>Welcome to Your Homelab</h1>
-    <p>Select a service from the bubble to the left.</p>
-    <!-- Future content can go here -->
+    <div class="bubble terminal-container">
+      <iframe src="/terminal/"></iframe>
+    </div>
   </div>
-
-  <!-- Embedded terminal bubble -->
-  <div class="terminal-bubble">
-    <iframe src="/terminal/" allowfullscreen></iframe>
-  </div>
-
 </body>
 </html>

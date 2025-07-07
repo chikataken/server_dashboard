@@ -50,6 +50,7 @@
       font-size: 0.875rem;
       font-weight: 500;
       color: #e6e6e6;
+      text-transform: lowercase;
     }
     .sidebar-content {
       padding: 0.75rem 1rem;
@@ -60,13 +61,14 @@
     .sidebar-content a {
       display: block;
       text-decoration: none;
-      color: #58a6ff; /* Blue link color */
-      font-weight: bold;
+      color: #ffffff; /* White links */
+      font-weight: 500; /* match header clarity */
+      font-size: 0.875rem;
       padding: 0.5rem;
       border-radius: 0.25rem;
       transition: background 0.2s;
     }
-    .sidebar-content a:hover { background: rgba(88,166,255,0.1); }
+    .sidebar-content a:hover { background: rgba(255,255,255,0.1); }
     /* Terminal bubble */
     .terminal-container {
       flex: 1;
@@ -84,12 +86,13 @@
       font-size: 0.875rem;
       font-weight: 500;
       color: #e6e6e6;
+      text-transform: lowercase;
     }
     .terminal-body {
       flex: 1;
       background: #343541; /* match bubble color */
       overflow: hidden;
-      padding: 0; /* remove padding for flush layout */
+      padding: 0;
     }
     .terminal-body iframe {
       width: 100%;
@@ -97,26 +100,26 @@
       border: none;
       border-radius: 0 0 0.5rem 0.5rem;
       background: #1e1e1e; /* terminal background */
-      transform: translate(5px, 5px); /* shift content slightly */
-      transform-origin: top left;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <nav class="bubble sidebar">
-      <div class="sidebar-header">Links</div>
+      <div class="sidebar-header">links</div>
       <div class="sidebar-content">
         <ul>
           <li><a href="http://192.168.1.171:8123" target="_blank">HA</a></li>
           <li><a href="http://192.168.1.171:2283" target="_blank">Immich</a></li>
           <li><a href="http://192.168.1.171:8091" target="_blank">Zwave</a></li>
           <li><a href="http://192.168.1.171:90/admin" target="_blank">Pi-Hole</a></li>
+          <li><a href="https://unifi.ui.com" target="_blank">Unifi</a></li>
+          <li><a href="https://wastake.com" target="_blank">wastake.com</a></li>
         </ul>
       </div>
     </nav>
     <div class="bubble terminal-container">
-      <div class="terminal-header">ssh</div>
+      <div class="terminal-header">bash</div>
       <div class="terminal-body">
         <iframe id="terminalFrame" src="/terminal/" tabindex="0"></iframe>
       </div>
